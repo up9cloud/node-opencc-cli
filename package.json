@@ -1,0 +1,28 @@
+{
+  "name": "nuts-opencc-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha && ./test/test.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nutspie/nuts-opencc-service.git"
+  },
+  "author": "",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/nutspie/nuts-opencc-service/issues"
+  },
+  "homepage": "https://github.com/nutspie/nuts-opencc-service#readme",
+  "dependencies": {
+    "async": "^2.1.4",
+    "glob": "^7.1.1",
+    "opencc": "^1.0.4"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  }
+}
