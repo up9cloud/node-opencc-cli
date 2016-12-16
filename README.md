@@ -1,8 +1,13 @@
 
 # dev
 
+- npm install
+
+## usage
+
+會把該資料夾直接置換
+
 ```sh
-npm install # or cnpm install
 node index.js <source folder ABSOLUTE path> [format type] [json_escaped]
 ```
 
@@ -22,3 +27,7 @@ mocha
 # cli test
 ./test/test.sh
 ```
+
+## TODO
+
+- ignore files (.jpg, etc...)
