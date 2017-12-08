@@ -1,11 +1,10 @@
 
-# dev
-
-- npm install
-
-## usage
+# opencc cli
 
 ```sh
+# install
+npm i -g openccr-cli
+
 # show usage
 opencc
 ```

@@ -7,7 +7,7 @@ function usage () {
 Usage: : opencc <PATH> [FORMAT] [ESCAPED]
 
   PATH:    (required)         source folder or file path, folder means affect all files (recursive).
-  FORMAT:  (default is "t2s") format type, see https://github.com/BYVoid/OpenCC
+  FORMAT:  (default is "t2s") format type, see https://github.com/BYVoid/OpenCC#configurations-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6
   ESCAPED: (default is false) only affect json data
                               true: ["軒"] => ["\\u8f69"]
                               false: ["軒"] => ["轩"]

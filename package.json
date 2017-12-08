@@ -1,7 +1,7 @@
 {
-  "name": "nuts-opencc-service",
+  "name": "openccr-cli",
   "version": "2.0.0",
-  "description": "",
+  "description": "opencc wrapper.",
   "main": "index.js",
   "scripts": {
     "test": "mocha && ./test/test.sh"
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nutspie/nuts-opencc-service.git"
+    "url": "git+https://github.com/up9cloud/node-opencc-cli.git"
   },
-  "author": "",
+  "author": "up9cloud <https://github.com/up9cloud>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nutspie/nuts-opencc-service/issues"
+    "url": "https://github.com/up9cloud/node-opencc-cli/issues"
   },
-  "homepage": "https://github.com/nutspie/nuts-opencc-service#readme",
+  "homepage": "https://github.com/up9cloud/node-opencc-cli#readme",
   "dependencies": {
     "glob": "^7.1.2",
     "opencc": "^1.0.5"
