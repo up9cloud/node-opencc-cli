@@ -20,7 +20,6 @@
   },
   "homepage": "https://github.com/nutspie/nuts-opencc-service#readme",
   "dependencies": {
-    "async": "^2.6.0",
     "glob": "^7.1.2",
     "opencc": "^1.0.5"
   },

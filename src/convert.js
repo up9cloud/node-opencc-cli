@@ -1,4 +1,3 @@
-const async = require('async')
 // http://byvoid.github.io/OpenCC/1.0.2/node_2demo_8js-example.html
 const Opencc = require('opencc')
 
@@ -12,12 +11,10 @@ const defaultOptions = {
  *
  * @param  {String}   data    input string data
  * @param  {Object}   options see default_options
- * @param  {Function} cb      [description]
- * @return {void}             [description]
+ * @return {Promise}          [description]
  */
-module.exports = function (data, options, cb) {
+module.exports = async function (data, options) {
   if (typeof options === 'function') {
-    cb = options
     options = defaultOptions
   }
   if (!options) {
@@ -28,36 +25,39 @@ module.exports = function (data, options, cb) {
       options[k] = defaultOptions[k]
     }
   }
-  let cc = new Opencc(`${options.type}.json`)
+  let isJson = null
   let isJsonEscaped = options.json_escaped
-  let isJson = false
 
-  async.waterfall([
-    // convert json utf8 escaped to unescaped data.
-    // \u8f69 => 轩
-    cb => {
-      try {
-        let obj = JSON.parse(data)
-        isJson = true
-        data = JSON.stringify(obj)
-        return cb(null, data)
-      } catch (e) {
-        return cb(null, data)
-      }
-    },
-    // convert
-    (data, cb) => cc.convert(data, cb),
-    // to utf8 escape or not
-    // 轩 => \u8f69
-    (data, cb) => {
-      if (isJson && isJsonEscaped) {
-        try {
-          data = data.replace(/[\u007f-\uffff]/g, function (c) {
-            return '\\u' + ('0000' + c.charCodeAt(0).toString(16)).slice(-4)
-          })
-        } catch (e) {}
-      }
-      cb(null, data)
+  try {
+    let obj = JSON.parse(data)
+    isJson = true
+    // make sure to unescaped data. (\u8f69 => 轩)
+    if (!options.json_escaped) {
+      data = JSON.stringify(obj)
     }
-  ], cb)
+  } catch (e) {
+    isJson = false
+  }
+
+  // convert
+  data = await new Promise((resolve, reject) => {
+    let cc = new Opencc(`${options.type}.json`)
+    cc.convert(data, (err, converted) => {
+      if (err) {
+        return reject(err)
+      }
+      return resolve(converted)
+    })
+  })
+
+  // to utf8 escape or not
+  // 轩 => \u8f69
+  if (isJson && isJsonEscaped) {
+    try {
+      data = data.replace(/[\u007f-\uffff]/g, function (c) {
+        return '\\u' + ('0000' + c.charCodeAt(0).toString(16)).slice(-4)
+      })
+    } catch (e) {}
+  }
+  return data
 }

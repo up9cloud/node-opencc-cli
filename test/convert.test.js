@@ -1,38 +1,21 @@
-// const fs = require('fs')
 const expect = require('chai').expect
-
 const convert = require(`${__dirname}/../src/convert.js`)
 
-describe('test', function () {
-  it('沒過老闆會罵1', function (done) {
-    convert('軒', null, (err, data) => {
-      if (err) {
-        throw err
-      }
-      expect(data).to.be.equal('轩')
-      done()
-    })
+describe('test convert.js', function () {
+  it('default', async () => {
+    let data = await convert('軒')
+    expect(data).to.be.equal('轩')
   })
-  it('沒過老闆會罵2', function (done) {
-    convert('["軒"]', {
+  it('escaped', async () => {
+    let data = await convert('["軒"]', {
       json_escaped: true
-    }, (err, data) => {
-      if (err) {
-        throw err
-      }
-      expect(data).to.be.equal('["\\u8f69"]')
-      done()
     })
+    expect(data).to.be.equal('["\\u8f69"]')
   })
-  it('沒過老闆會罵3', function (done) {
-    convert('["軒"]', {
+  it('not escaped', async () => {
+    let data = await convert('["軒"]', {
       json_escaped: false
-    }, (err, data) => {
-      if (err) {
-        throw err
-      }
-      expect(data).to.be.equal('["轩"]')
-      done()
     })
+    expect(data).to.be.equal('["轩"]')
   })
 })
