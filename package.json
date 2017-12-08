@@ -11,7 +11,7 @@
     "url": "git+https://github.com/nutspie/nuts-opencc-service.git"
   },
   "author": "",
-  "license": "SEE LICENSE IN LICENSE",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/nutspie/nuts-opencc-service/issues"
   },
@@ -24,5 +24,8 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^3.4.2"
+  },
+  "engines": {
+    "node": ">=8.0.0"
   }
 }
