@@ -24,8 +24,8 @@
     "opencc": "^1.0.5"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "mocha": "^3.4.2"
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1"
   },
   "engines": {
     "node": ">=8"
