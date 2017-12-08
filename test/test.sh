@@ -3,7 +3,7 @@
 __DIR__=$(dirname "${BASH_SOURCE[0]}")
 
 cp $__DIR__/source.json $__DIR__/dist.json
-node $__DIR__/../index.js $__DIR__/dist.json
+node $__DIR__/../bin/opencc.js $__DIR__/dist.json
 
 SRC=`cat $__DIR__/dist.json`
 EXPECT=`cat $__DIR__/expect.json`
@@ -14,7 +14,7 @@ if [ "$SRC" != "$EXPECT" ];then
 fi
 
 cp $__DIR__/source.json $__DIR__/dist.json
-node $__DIR__/../index.js $__DIR__/dist.json t2s true
+node $__DIR__/../bin/opencc.js $__DIR__/dist.json t2s true
 
 SRC=`cat $__DIR__/dist.json`
 EXPECT=`cat $__DIR__/expect.escaped.json`

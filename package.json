@@ -6,6 +6,9 @@
   "scripts": {
     "test": "mocha && ./test/test.sh"
   },
+  "bin": {
+    "opencc": "./bin/opencc.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nutspie/nuts-opencc-service.git"
@@ -26,6 +29,6 @@
     "mocha": "^3.4.2"
   },
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=8"
   }
 }
