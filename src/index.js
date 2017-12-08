@@ -15,6 +15,8 @@ if (process.argv[2]) {
 var options = {}
 if (process.argv[3]) {
   options.type = process.argv[3]
+} else {
+  options.type = 't2s' // traditional chinese to simplified chinese
 }
 if (
   process.argv[4] === 'true' ||
